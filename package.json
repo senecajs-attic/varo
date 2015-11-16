@@ -1,6 +1,6 @@
 {
   "name": "varo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A frontend pattern matching module",
   "main": "./lib/varo.js",
   "scripts": {
