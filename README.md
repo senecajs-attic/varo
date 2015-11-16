@@ -1,4 +1,4 @@
-![Seneca](./assets/varo-logo.svg)
+![logo](https://rawgit.com/senecajs/varo/master/assets/varo-logo.svg)
 > pattern matched logic for browser apps
 
 # varo
