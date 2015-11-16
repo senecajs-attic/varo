@@ -86,7 +86,80 @@ Varo.act({role: 'sum', left: 1, right: 2})
 
 ## API
 
-- To Follow
+### .handle(msg, handler(err, reply)) : _this_
+Adds a handler for the msg provided. The handler is called when .()act is used.
+
+```js
+Varo.handle({role: 'sum'}, function (msg, done) {
+  return done(null, {answer: (msg.left - msg.right)})
+})
+```
+
+### .observe(msg, observer(msg)) : _this_
+Adds an observer that listens for any message matching the msg param. The observer is called
+when .act() is used. Observers are called in addition to a single applicable handler
+
+```js
+Varo.observe({role: 'sum'}, function (msg) {
+  console.log(msg)
+})
+```
+
+### .act(msg [, reply]) : _this_
+Sends the provided message to any interested single handler and observers. Calls to act can be
+fire and forget or request response as necessary.
+
+```js
+Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
+  console.log(reply)
+})
+
+Varo.act({role: 'sum', left: 1, right: 2})
+```
+
+### .plugin(plugin(vero)) : _this_
+Calls the provided function with the current instance of varo. Useful to group functionality
+together in modular format.
+
+```js
+Varo.plugin(function (varo) {
+  varo.handle({role: 'sum'}, function (msg, done) {
+    return done(null, {answer: (msg.left + msg.right)})
+  })
+
+  varo.observe({role: 'sum'}, function (msg) {
+    console.log(msg)
+  })
+})
+
+Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
+  console.log(reply)
+})
+```
+
+### .removeHandler(handler) : _this_
+Removes a named handler. Does not work for anonymous functions.
+
+```js
+var handler = function (msg, done) {
+  return done(null, {answer: (msg.left + msg.right)})
+}
+
+Vero.handle({role: 'sum'}, handler)
+Vero.removeHandler(handler)
+```
+
+### .removeObserver(observer) : _this_
+Removes a named observer. Does not work for anonymous functions.
+
+```js
+var observer = function (msg) {
+  console.log(msg)
+}
+
+Vero.observe({role: 'sum'}, observer)
+Vero.removeObserver(observer)
+```
 
 ## Contributing
 The [Senecajs org][] encourages open participation. If you feel you can help in any way, be it with
