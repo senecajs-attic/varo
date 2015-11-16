@@ -117,7 +117,7 @@ Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
 Varo.act({role: 'sum', left: 1, right: 2})
 ```
 
-### .plugin(plugin(vero)) : _this_
+### .plugin(plugin(Varo)) : _this_
 Calls the provided function with the current instance of varo. Useful to group functionality
 together in modular format.
 
@@ -145,8 +145,8 @@ var handler = function (msg, done) {
   return done(null, {answer: (msg.left + msg.right)})
 }
 
-Vero.handle({role: 'sum'}, handler)
-Vero.removeHandler(handler)
+Varo.handle({role: 'sum'}, handler)
+Varo.removeHandler(handler)
 ```
 
 ### .removeObserver(observer) : _this_
@@ -157,8 +157,8 @@ var observer = function (msg) {
   console.log(msg)
 }
 
-Vero.observe({role: 'sum'}, observer)
-Vero.removeObserver(observer)
+Varo.observe({role: 'sum'}, observer)
+Varo.removeObserver(observer)
 ```
 
 ## Contributing
