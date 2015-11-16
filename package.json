@@ -1,0 +1,19 @@
+{
+  "name": "varo",
+  "version": "0.0.1",
+  "description": "A frontend pattern matching module",
+  "main": "./lib/varo.js",
+  "scripts": {
+    "test": "lab -v ./test/*.test.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bloomrun": "^0.4.1",
+    "fastparallel": "^2.0.1"
+  },
+  "devDependencies": {
+    "code": "^2.0.1",
+    "lab": "^7.3.0"
+  }
+}
