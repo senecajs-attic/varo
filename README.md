@@ -1,5 +1,5 @@
 ![logo](https://rawgit.com/senecajs/varo/master/assets/varo-logo.svg)
-> pattern matched logic for browser apps
+> pattern matched composition for browser apps
 
 # varo
 [![Build Status][travis-badge]][travis-url]
@@ -11,7 +11,7 @@ compliment [Seneca][senecajs.org] by providing a similar, albeit, smaller set of
 The focus of varo is to provide the ability to compose logic around patterns; it does
 not handle transport or any other concerns.
 
-- __Version:__ 0.1.2
+- __Version:__ 0.1.3
 - __Node:__ 4, 5
 - __Lead Maintainer:__ [Dean McDonnell][lead]
 - __License:__ [MIT][]
