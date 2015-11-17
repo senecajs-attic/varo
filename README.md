@@ -9,7 +9,7 @@ __varo__ is a _pattern matched logic_ library designed for the browser. varo is 
 compliment [Seneca][senecajs.org] by providing a similar, albeit, smaller set of API's.
 
 The focus of varo is to provide the ability to compose logic around patterns; it does
-not handle transport or any other concerns.
+not handle transport or any other concerns. 
 
 - __Version:__ 0.1.3
 - __Node:__ 4, 5

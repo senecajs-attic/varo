@@ -13,7 +13,7 @@
     "url": "git://github.com/senecajs/varo.git"
   },
   "dependencies": {
-    "bloomrun": "^0.4.1",
+    "bloomrun": "1.0.0",
     "fastparallel": "^2.0.1"
   },
   "devDependencies": {

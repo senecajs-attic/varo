@@ -37,4 +37,20 @@ describe('Varo', function () {
 
     done()
   })
+
+  it('patterns are matched fully, not partially', function (done) {
+    varo.handle({role: 'auth', cmd: 'login'}, function (msg, done) {
+      expect(msg).to.deep.equal({role: 'auth', cmd: 'login'})
+      return done(null, true)
+    })
+
+    varo.handle({role: 'auth', query: 'isAuthenticated'}, function (msg, done) {
+      expect(msg).to.deep.equal({role: 'auth', query: 'isAuthenticated'})
+    })
+
+    varo.act({role: 'auth', cmd: 'login'})
+    varo.act({role: 'auth', query: 'isAuthenticated'})
+
+    done()
+  })
 })
