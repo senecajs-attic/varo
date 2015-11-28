@@ -5,10 +5,11 @@
 [![Build Status][travis-badge]][travis-url]
 [![Gitter][gitter-badge]][gitter-url]
 
-__varo__ is a _pattern matched logic_ library designed for the browser. varo is designed to
-compliment [Seneca][senecajs.org] by providing a similar, albeit, smaller set of API's.
+__varo__ is a _pattern matched logic_ library designed for the browser. Varo is designed to
+compliment [Seneca][senecajs.org] by providing a similar, albeit, smaller set of API's. It's ideal
+use case is in browser-side apps.
 
-The focus of varo is to provide the ability to compose logic around patterns; it does
+The focus of Varo is to provide the ability to compose logic around patterns; it does
 not handle transport or any other concerns.
 
 - __Version:__ 0.2.0
@@ -43,34 +44,23 @@ npm run test
 
 var Varo = require('varo')()
 
-// First .handle() takes priority unless a more
-// specific pattern is matched
+// Only one handler will be called, more specific wins,
+// then insertion order is checked on two identical matches.
 Varo.handle({role: 'sum'}, function (msg, done) {
-  var answer = msg.left + msg.right
-
-  // Will get printed once per call
-  console.log('first act called')
-
-  return done(null, {answer: answer})
+  return done(null, {answer: (msg.left + msg.right)})
 })
 
 // Won't be called unless the pattern above was removed
 Varo.handle({role: 'sum'}, function (msg, done) {
-  var answer = msg.left - msg.right
-
-  return done(null, {answer: answer})
+  return done(null, {answer: (msg.left - msg.right)})
 })
 
-// Listen for anything emitted via act
-Varo.observe({role: 'sum'}, function (msg) {
-  console.log(msg)
+// Listen for anything emitted via emit
+Varo.observe({role: 'user'}, function (msg) {
+  console.log(msg.user.name)
 })
 
-// Great for messages you care about but don't
-// want to respond to
-Varo.observe({role: 'sum'}, function (msg) {
-  console.log(msg)
-})
+Varo.emit(role: 'user', event: 'change', user: {name: 'Dean'}})
 
 // Get a response to a message. Handy for asking for data or
 // making calculations.
@@ -78,8 +68,8 @@ Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
   console.log(reply)
 })
 
-// You don't have to use a callback, if you are just emitting events or
-// running an handler that doesn't respond then it is ok to leave it out.
+// You don't have to use a callback, if you are running an handler that
+// doesn't respond then it is ok to leave it out.
 Varo.act({role: 'sum', left: 1, right: 2})
 
 ```
@@ -87,7 +77,8 @@ Varo.act({role: 'sum', left: 1, right: 2})
 ## API
 
 ### .handle(msg, handler(err, reply)) : _this_
-Adds a handler for the msg provided. The handler is called when .()act is used.
+Adds a handler for the msg provided. The handler is called when .act() is used. Note that only
+one handler will be called.
 
 ```js
 Varo.handle({role: 'sum'}, function (msg, done) {
@@ -97,7 +88,7 @@ Varo.handle({role: 'sum'}, function (msg, done) {
 
 ### .observe(msg, observer(msg)) : _this_
 Adds an observer that listens for any message matching the msg param. The observer is called
-when .act() is used. Observers are called in addition to a single applicable handler
+when .emit() is used. Multiple observers can handle a single message; there is no callback
 
 ```js
 Varo.observe({role: 'sum'}, function (msg) {
@@ -115,6 +106,19 @@ Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
 })
 
 Varo.act({role: 'sum', left: 1, right: 2})
+```
+
+### .emit(msg) : _this_
+Sends the provided message to any interested observers. Calls to emit have no callback and are
+considered fire and forget. This makes `.emit() / .observere()` a great pattern matched replacement
+for event emitters.
+
+```js
+Varo.handle({role: 'user', event: 'changed'}, function (msg) {
+  console.log(msg.user.name)  
+})
+
+Varo.emit({role: 'user', event: 'changed', user: {name: 'Dean'})
 ```
 
 ### .plugin(plugin(Varo)) : _this_
