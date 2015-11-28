@@ -1,6 +1,6 @@
 {
   "name": "varo",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "pattern matched composition for browser apps",
   "main": "./lib/varo.js",
   "scripts": {

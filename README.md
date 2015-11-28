@@ -12,7 +12,7 @@ use case is in browser-side apps.
 The focus of Varo is to provide the ability to compose logic around patterns; it does
 not handle transport or any other concerns.
 
-- __Version:__ 0.2.0
+- __Version:__ 0.3.0
 - __Node:__ 4, 5
 - __Lead Maintainer:__ [Dean McDonnell][lead]
 - __License:__ [MIT][]
@@ -97,7 +97,7 @@ Varo.observe({role: 'sum'}, function (msg) {
 ```
 
 ### .act(msg [, reply]) : _this_
-Sends the provided message to any interested single handler and observers. Calls to act can be
+Sends the provided message to any interested single handler. Calls to act can be
 fire and forget or request response as necessary.
 
 ```js
