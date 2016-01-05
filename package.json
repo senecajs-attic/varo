@@ -4,7 +4,8 @@
   "description": "pattern matched composition for browser apps",
   "main": "./lib/varo.js",
   "scripts": {
-    "test": "lab -v ./test/*.test.js"
+    "test": "lab -v ./test/*.test.js",
+    "coverage": "lab -s ./test/*.test.js -r lcov | coveralls"
   },
   "author": "Dean McDonnell (https://github.com/mcdonnelldean)",
   "license": "MIT",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "code": "2.x.x",
+    "coveralls": "^2.11.6",
     "lab": "7.x.x"
   }
 }
