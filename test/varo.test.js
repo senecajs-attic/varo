@@ -21,16 +21,16 @@ describe('Varo', function () {
   })
 
   it('works as expected', function (done) {
-    varo.handle({role:'test'}, function (msg, done) {
-      expect(msg).to.deep.equal({role:'test'})
+    varo.handle({role: 'test'}, function (msg, done) {
+      expect(msg).to.deep.equal({role: 'test'})
       return done(null, true)
     })
 
-    varo.observe({role:'test'}, function (msg) {
-      expect(msg).to.deep.equal({role:'test'})
+    varo.observe({role: 'test'}, function (msg) {
+      expect(msg).to.deep.equal({role: 'test'})
     })
 
-    varo.act({role:'test'}, function (err, reply) {
+    varo.act({role: 'test'}, function (err, reply) {
       expect(err).to.equal(null)
       expect(reply).to.equal(true)
     })
@@ -39,13 +39,13 @@ describe('Varo', function () {
   })
 
   it('deep matching is supported', function (done) {
-    varo.handle({role:'test', txt: {foo: /.*/}}, function (msg, done) {
-      expect(msg).to.deep.equal({role:'test', txt: {foo: 'bar'}})
+    varo.handle({role: 'test', txt: {foo: /.*/}}, function (msg, done) {
+      expect(msg).to.deep.equal({role: 'test', txt: {foo: 'bar'}})
       return done(null, true)
     })
 
 
-    varo.act({role:'test', txt: {foo: 'bar'}}, function (err, reply) {
+    varo.act({role: 'test', txt: {foo: 'bar'}}, function (err, reply) {
       expect(err).to.equal(null)
       expect(reply).to.equal(true)
     })
@@ -56,11 +56,11 @@ describe('Varo', function () {
   it('observes as expected', function (done) {
     var observeCount = 0
 
-    varo.observe({role:'test'}, function (msg) {
+    varo.observe({role: 'test'}, function (msg) {
       observeCount += 1
     })
 
-    varo.observe({role:'test'}, function (msg) {
+    varo.observe({role: 'test'}, function (msg) {
       observeCount += 1
     })
 
@@ -74,12 +74,12 @@ describe('Varo', function () {
   })
 
   it('works as expected', function (done) {
-    varo.handle({role:'test'}, function (msg, done) {
-      expect(msg).to.deep.equal({role:'test', left: 3, right: 3})
+    varo.handle({role: 'test'}, function (msg, done) {
+      expect(msg).to.deep.equal({role: 'test', left: 3, right: 3})
       return done(null, true)
     })
 
-    varo.act({role:'test', left: 3, right: 3}, function (err, reply) {
+    varo.act({role: 'test', left: 3, right: 3}, function (err, reply) {
       expect(err).to.equal(null)
       expect(reply).to.equal(true)
     })

@@ -14,5 +14,6 @@ var Plugin = function (varo) {
 
 Varo.plugin(Plugin)
 Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
+  if (err) return console.error(err)
   console.log(reply)
 })
