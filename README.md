@@ -2,7 +2,10 @@
 > pattern matched composition for browser apps
 
 # varo
+[![npm version][npm-badge]][npm-url]
 [![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+[![Dependency Status][david-badge]][david-url]
 [![Gitter][gitter-badge]][gitter-url]
 
 __varo__ is a _pattern matched logic_ library designed for the browser. Varo is designed to
@@ -12,16 +15,12 @@ use case is in browser-side apps.
 The focus of Varo is to provide the ability to compose logic around patterns; it does
 not handle transport or any other concerns.
 
-- __Version:__ 0.3.0
-- __Node:__ 4, 5
-- __Lead Maintainer:__ [Dean McDonnell][lead]
-- __License:__ [MIT][]
-
 If you're using this module, and need help, you can:
 
 - Post a [github issue][],
 - Tweet to [@senecajs][],
 - Ask on the [Gitter][gitter-url].
+- Contact __Lead Maintainer:__ [Dean McDonnell][lead]
 
 ## Install
 To install, simply use npm,
@@ -179,8 +178,15 @@ Licensed under [MIT][].
 [Seneca.js]: https://www.npmjs.com/package/seneca
 [@senecajs]: http://twitter.com/senecajs
 [senecajs.org]: http://senecajs.org/
-[travis-badge]: https://travis-ci.org/senecajs/varo.svg
+
+[npm-badge]: https://img.shields.io/npm/v/varo.svg
+[npm-url]: https://npmjs.com/package/varo
+[travis-badge]: https://api.travis-ci.org/senecajs/varo.svg?branch=master
 [travis-url]: https://travis-ci.org/senecajs/varo
+[coveralls-badge]:https://coveralls.io/repos/senecajs/varo/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/senecajs/varo?branch=master
+[david-badge]: https://david-dm.org/senecajs/varo.svg
+[david-url]: https://david-dm.org/senecajs/varo
 [gitter-badge]: https://badges.gitter.im/Join%20Chat.svg
 [gitter-url]: https://gitter.im/senecajs/seneca
 [github issue]: https://github.com/senecajs/varo/issues
