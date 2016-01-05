@@ -33,6 +33,7 @@ Varo.observe({role: 'sum'}, function (msg) {
 // Get a response to a message. Handy for asking for data or
 // making calculations.
 Varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
+  if (err) return console.error(err)
   console.log(reply)
 })
 
