@@ -9,6 +9,10 @@
     "lint": "lab -dL"
   },
   "author": "Dean McDonnell (https://github.com/mcdonnelldean)",
+  "contributors": [
+    "Dean McDonnell (https://github.com/mcdonnelldean)",
+    "Adrien Becchis (https://github.com/AdrieanKhisbe)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
