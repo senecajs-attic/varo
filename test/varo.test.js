@@ -132,4 +132,56 @@ describe('Varo', function () {
 
     done()
   })
+
+  it('plugin works as expected', function(done){
+    varo.plugin(function (Varo) {
+      Varo.handle({role: 'sum'}, function (msg, done) {
+        return done(null, {answer: (msg.left + msg.right)})
+      })
+
+      Varo.observe({role: 'sum'})
+    })
+
+    varo.act({role: 'sum', left: 1, right: 2}, function (err, reply) {
+      expect(reply).to.exist()
+      expect(reply.answer).to.equal(3)
+    })
+
+    done()
+  })
+
+  it('removes handler', function (done) {
+    var hit = false
+    varo.handle({role: 'auth', cmd: 'login'}, function (msg, done) {
+      hit = true
+      return done(null)
+    })
+
+    varo.removeHandler({role: 'auth', cmd: 'login'})
+
+    varo.act({role: 'auth', cmd: 'login'})
+
+    setTimeout(function(){
+      expect(hit).to.equal(false)
+      done()
+    }, 111)
+  })
+
+  it('removes observer', function (done) {
+    var hit = false
+    varo.observe({role: 'test'}, function(msg){
+      hit = true
+    })
+
+    varo.removeObserver({role: 'test'})
+
+    varo.emit({role: 'test'})
+
+    setTimeout(function(){
+      expect(hit).to.equal(false)
+      done()
+    }, 111)
+  })
+
+
 })
